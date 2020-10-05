@@ -49,15 +49,32 @@ def polish_notation(input_args):
     return final_stack, x_is_present, another_mistake
 
 
+def polish_processing(stack):
+    coefficient_dict = {}
+    for i in range(len(stack)):
+        if stack[i] == '*' or stack[i] == '/' or stack[i] == '+' or stack[i] == '-':
+            if stack[i-1].isdigit() and  not stack[i -2].isdigit():
+                if stack[i - 2] in coefficient_dict:
+                    coefficient_dict[stack[i - 2]] = stack[i - 1]
+                 else:
+                   coefficient_dict[stack[i - 2]] += stack[i - 1]
+            elif stack[i - 2].isdigit() and not stack[i - 1].isdigit():
+                if stack[i - 1] in coefficient_dict:
+                    coefficient_dict[stack[i - 1]] = stack[i - 2]
+                else:
+                    coefficient_dict[stack[i - 1]] += stack[i - 2]
+    return coefficient_dict
+
+
 def parse_input():
     input_string = input()
-    input_args, equal_is_present = prepare_input_args(input_string)
-    coefficient_dict = {}
 
-    print(input_args)
+    input_args, equal_is_present = prepare_input_args(input_string)
+
     stack, x_is_present, another_mistake = polish_notation(input_args)
 
-    print(stack)
+    coefficient_dict = polish_processing(stack)
+
     return coefficient_dict
 
 
