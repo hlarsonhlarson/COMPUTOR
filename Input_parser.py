@@ -1,8 +1,27 @@
+def prepare_input_args(input_string):
+
+    input_string = input_string.lower()
+    input_args = input_string.split()
+
+    equal_is_present = 0
+    for i in range(len(input_args)):
+        if input_args[i] == '=':
+            input_args.remove(input_args[i])
+            input_args.insert(i - 1, '-')
+            input_args.insert(i, '(')
+            input_args.append(')')
+            equal_is_present = 1
+            break
+    print(input_args)
+    return input_args, equal_is_present
+
 
 def polish_notation(input_args):
     op_stack = []
     final_stack = []
     for elem in input_args:
+        if elem == '=':
+            break
         if elem.isdigit():
             final_stack.append(float(elem))
         elif elem.isalpha():
@@ -14,11 +33,10 @@ def polish_notation(input_args):
 
 def parse_input():
     input_string = input()
-    input_string = input_string.lower()
-    input_args = input_string.split()
+    input_args, equal_is_present = prepare_input_args(input_string)
     coefficient_dict = {}
 
-    stack = polish_notation(input_args)
+    # stack = polish_notation(input_args)
 
     return coefficient_dict
 
