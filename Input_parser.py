@@ -22,7 +22,6 @@ def polish_notation(input_args):
     another_mistake = 0
     for elem in input_args:
         if elem.isdigit():
-            print(elem)
             final_stack.append(float(elem))
         elif elem == '(':
             op_stack.append(elem)
@@ -36,18 +35,17 @@ def polish_notation(input_args):
                 final_stack.append(op_stack.pop())
             op_stack.append(elem)
         elif elem == '*' or elem == '/':
-            while op_stack and op_stack[-1] != '^':
+            while op_stack and op_stack[-1] != '-' and op_stack[-1] != '+' and op_stack[-1] != '(':
                 final_stack.append(op_stack.pop())
             op_stack.append(elem)
         elif elem[0] == 'x':
-            final_stack.append(float(elem))
+            final_stack.append(elem)
             x_is_present = 1
         else:
             another_mistake = 1
             break
-    print(op_stack)
     while op_stack:
-        final_stack.append(final_stack.pop())
+        final_stack.append(op_stack.pop())
     return final_stack, x_is_present, another_mistake
 
 
@@ -56,6 +54,7 @@ def parse_input():
     input_args, equal_is_present = prepare_input_args(input_string)
     coefficient_dict = {}
 
+    print(input_args)
     stack, x_is_present, another_mistake = polish_notation(input_args)
 
     print(stack)
