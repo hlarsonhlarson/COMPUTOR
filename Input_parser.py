@@ -10,8 +10,9 @@ def parse_input():
     equality_place = [x for x, y in enumerate(input_string) if y == '=']
     newstr = ''.join((ch if ch in '0123456789.-e' else ' ') for ch in input_string)
     newstr = re.split(r'(-)', newstr)
-    nums = [elem.split() for elem in newstr]
-    print(nums)
+    # nums = [elem.split() for elem in newstr]
+    # print(nums)
+    print(newstr)
 
 
 
