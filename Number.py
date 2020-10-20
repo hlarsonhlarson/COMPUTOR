@@ -1,4 +1,6 @@
 from error import error
+from Sign import Sign
+from Variable import Variable
 
 
 def is_number(part):
@@ -43,4 +45,8 @@ class Number:
 
     def num_init(self):
         self.num = float(self.part)
+
+    def perfom_op(self, b, op):
+        if
+
 
