@@ -1,6 +1,4 @@
 from error import error
-from Sign import Sign
-from Variable import Variable
 
 
 def is_number(part):
@@ -42,11 +40,3 @@ class Number:
                 error(f'unidentified letter "{sign}" in the token "{self.part}"')
         if count_of_dots != 1:
             error(f'very many dots in the token "{self.part}"')
-
-    def num_init(self):
-        self.num = float(self.part)
-
-    def perfom_op(self, b, op):
-        if
-
-

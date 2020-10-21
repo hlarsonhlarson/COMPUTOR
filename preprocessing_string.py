@@ -57,11 +57,15 @@ def polish_notation(input_args):
 
 def get_token_class(piece_of_string):
     if is_number(piece_of_string):
-        return Number(piece_of_string)
+        tmp_num = Number(piece_of_string)
+        tmp_num.check_piece()
+        tmp_var = Variable('x^0')
+        tmp_var.set_num_coef(tmp_num.num)
+        return tmp_var
     elif '^' in piece_of_string:
         return Variable(piece_of_string)
     elif len(piece_of_string) == 1 and piece_of_string.isalpha():
-        return Variable(piece_of_string)
+        return Variable(piece_of_string + '^1')
     elif piece_of_string in ('+', '-', '*', '/'):
         return Sign(piece_of_string)
     error(f'unidentified token {piece_of_string}')

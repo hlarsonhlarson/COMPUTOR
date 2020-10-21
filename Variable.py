@@ -1,6 +1,4 @@
 from error import error
-from Sign import Sign
-from Number import Number
 
 
 class Variable:
@@ -8,7 +6,7 @@ class Variable:
     def __init__(self, part):
         self.part = part
         self.prove_of_piece()
-        self.pow = part[2:]
+        self.pow = float(part[2:])
         self.letter = part[0]
         self.coeff = 1
 
@@ -28,30 +26,15 @@ class Variable:
             error(
                 f'the power "{splitted_piece[1]}" of the variable "{splitted_piece[0]}" in the token "{self.part}" is too little')
 
-    def perfom_var_op(self, b, op):
-        if op.sign == '*':
-            self.coeff = self.coeff + b.coeff
-        elif op.sign == '+':
-        elif op.sign == '-':
-        elif op.sign == '/':
-            self.coeff = self.coeff - b.coeff
-        else:
-            error('I dunno what went wrong but it\'s not sign')
+    def set_num_coef(self, num):
+        self.coeff *= num
 
-    def perfom_num_op(self, b, op):
-        if op.sign == '*':
-            self.coeff = self.coeff * b.num
-        elif op.sign == '+':
-        elif op.sign == '-':
-        elif op.sign == '/':
-            self.coeff = self.coeff / b.num
+    def perfom_op(self, var2, op):
+        if op == '*':
+            self.coeff *= var2.coeff
+            self.pow += var2.pow
+        elif op == '/':
+            self.coeff /= var2.coeff
+            self.pow -= var2.pow
         else:
-            error('I dunno what went wrong but it\'s not sign')
-
-    def perfom_op(self, b, op):
-        if b is Variable:
-            self.perfom_var_op(b, op)
-        elif b is Number:
-            self.perfom_num_op(b, op)
-        else:
-            error(f'"{b} is not variable or number', b)
+            error('Something went wrong')
