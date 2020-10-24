@@ -1,4 +1,5 @@
 from error import error
+from Equation_part import Equation_part
 
 
 class Variable:
@@ -38,3 +39,22 @@ class Variable:
             self.pow -= var2.pow
         else:
             error('Something went wrong')
+
+    def plus_variable(self, b):
+        d = {self.pow: self.coeff}
+        if b.pow in d:
+            d[b.pow] += b.coeff
+        else:
+            d[b.pow] = b.coeff
+        return Equation_part(d)
+
+    def plus(self, b):
+        if isinstance(b, Variable):
+            return self.plus_variable(b)
+        return b.plus(self)
+
+    def minus(self, b):
+        if isinstance(b, Variable):
+            b.coeff *= -1
+            return self.plus_variable(b)
+        return b.invert_minus(self)
