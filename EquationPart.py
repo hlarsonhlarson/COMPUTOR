@@ -1,7 +1,7 @@
-from Variable import Variable
+import Variable
 
 
-class Equation_part:
+class EquationPart:
     def __init__(self, coeff_dict):
         self.coeff_dict = coeff_dict
 
@@ -13,7 +13,7 @@ class Equation_part:
         return self
 
     def plus(self, b):
-        if isinstance(b, Variable):
+        if isinstance(b, Variable.Variable):
             return self.plus_variable(b)
         for key, value in b.coeff_dict.items():
             if key in self.coeff_dict:
@@ -23,7 +23,7 @@ class Equation_part:
         return self
 
     def minus(self, b):
-        if isinstance(b, Variable):
+        if isinstance(b, Variable.Variable):
             b.coeff *= -1
             return self.plus_variable(b)
         for key, value in b.coeff_dict.items():
@@ -34,6 +34,6 @@ class Equation_part:
         return self
 
     def invert_minus(self, b):
-        for key, value in self.coeff_dict:
+        for key, value in self.coeff_dict.items():
             self.coeff_dict[key] = -value
         return self.plus_variable(b)

@@ -1,5 +1,5 @@
 from error import error
-from Equation_part import Equation_part
+import EquationPart
 
 
 class Variable:
@@ -46,7 +46,7 @@ class Variable:
             d[b.pow] += b.coeff
         else:
             d[b.pow] = b.coeff
-        return Equation_part(d)
+        return EquationPart.EquationPart(d)
 
     def plus(self, b):
         if isinstance(b, Variable):
