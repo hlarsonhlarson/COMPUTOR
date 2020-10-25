@@ -44,12 +44,12 @@ def polish_notation(input_args):
             while op_stack and op_stack[-1] != '-' and op_stack[-1] != '+' and op_stack[-1] != '(':
                 final_stack.append(op_stack.pop())
             op_stack.append(elem)
-        elif elem[0] == 'x':
+        elif elem[0] == 'x' or (elem[0] == '-' and elem[1] == 'x'):
             final_stack.append(elem)
             x_is_present = 1
         else:
-            another_mistake = 1
-            break
+            error(f'{elem} is incorect please write equation like this and use x as variable \
+                  \n 1 * X^2 + 1 * X^1 + 2 = 3')
     while op_stack:
         final_stack.append(op_stack.pop())
     return final_stack, x_is_present, another_mistake
@@ -83,9 +83,11 @@ def parse_input(input_string):
 
     input_args, equal_is_present = prepare_input_args(input_string)
 
+
     stack, x_is_present, another_mistake = polish_notation(input_args)
 
-    print(stack)
+    if not x_is_present:
+        error('Please use x as variable')
 
     output_stack = preprocess_stack(stack)
 

@@ -6,10 +6,18 @@ class Variable:
 
     def __init__(self, part):
         self.part = part
-        self.prove_of_piece()
-        self.pow = float(part[2:])
-        self.letter = part[0]
         self.coeff = 1
+        self.letter = self.set_letter(part)
+        self.prove_of_piece()
+        self.pow = float(self.part[2:])
+
+    def set_letter(self, part):
+        if part[0] == '-':
+            self.coeff = -1
+            print(self.part)
+            self.part = self.part[1:]
+            print(self.part)
+        return self.part[1]
 
     def prove_of_piece(self):
         if not ('^' in self.part):
