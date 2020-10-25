@@ -4,6 +4,7 @@ from Sign import Sign
 from error import error
 from _collections import defaultdict
 from EquationPart import EquationPart
+from root import find_root
 
 
 class Equation:
@@ -36,3 +37,19 @@ class Equation:
                 self.stack.insert(i + 1, tmp_res)
             i = i + 1
         self.coefficient_dict = self.stack[0].coeff_dict
+
+    def simple_form(self):
+        output_string = ''
+        tmp_dict = self.coefficient_dict.items()
+        tmp_dict = sorted(tmp_dict, key=lambda x: x[0])
+        for key, value in tmp_dict:
+            if value < 0:
+                output_string = output_string[:-2]
+                output_string = output_string + '- '
+                value *= -1
+            output_string += f'{value} * X^{key} + '
+        output_string = output_string[:-2]
+        output_string += '= 0'
+
+    def solve(self):
+        print(find_root(8, 3))
