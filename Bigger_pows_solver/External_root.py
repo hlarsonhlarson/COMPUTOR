@@ -7,7 +7,7 @@ def external_root(p, extremity, limit_sign, initial_step, tolerance, solver):
     Look for a root in intervals where one of its limits is -infinity or infinity
     Parameters
     ----------
-    p : sympy polynomial
+    p : coefficients dict
     extremity : numberInterval is either (-infinity, extremity] or (extremity, infinity), depending on initial_step
     limit_sign :number sign
         Sign of polynomial at -infinity or at infinity, depending on initial_step
@@ -23,7 +23,7 @@ def external_root(p, extremity, limit_sign, initial_step, tolerance, solver):
         A bracketing root-finding function such as bisection
     ----------
     """
-    value_at_extremity = p_as_function(extremity)
+    value_at_extremity = p_as_function(extremity, p)
     if abs(value_at_extremity) <= tolerance:
         if initial_step < 0:
             root_found = [extremity]
