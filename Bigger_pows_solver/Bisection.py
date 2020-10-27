@@ -1,8 +1,11 @@
-def bisection(a, b, tolerance, p_as_function, func_pdiff):
-    p_a = p_as_function(a)
-    p_b = p_as_function(b)
+from .utils import p_as_function
+
+
+def bisection(a, b, tolerance, p):
+    p_a = p_as_function(a, p)
+    p_b = p_as_function(b, p)
     m = (a + b) / 2
-    p_m = p_as_function(m)
+    p_m = p_as_function(m, p)
     progress = True
     iter = 0
     while abs(p_m) > tolerance and progress:
@@ -16,7 +19,7 @@ def bisection(a, b, tolerance, p_as_function, func_pdiff):
                 a = m
                 p_a = p_m
                 m = (a + b) / 2
-                p_m = p_as_function(m)
+                p_m = p_as_function(m, p)
                 if old_a == a and old_b == b:
                     progress = False
                     raise ValueError(f'bissection: no progress after {iter} iterations, ‘f‘with \na = {a} \nb = {b}')

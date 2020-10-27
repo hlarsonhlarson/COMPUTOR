@@ -1,5 +1,6 @@
 from Tokens.Sign import Sign
 from root import find_root
+from Bigger_pows_solver.mp_roots import mp_roots
 
 
 class Equation:
@@ -81,7 +82,7 @@ class Equation:
             print('There is no solution because it\'s something strange')
 
     def mega_solver(self):
-        print('Stub')
+        print(mp_roots(self.coefficient_dict, 'hibrid'))
 
     def find_biggest_pow(self):
         tmp = sorted(self.coefficient_dict.items(), key=lambda x: x[0], reverse=True)
