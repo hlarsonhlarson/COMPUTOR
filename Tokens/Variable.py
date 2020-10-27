@@ -1,5 +1,5 @@
-from error import error
-import EquationPart
+from parsing_string_utils.error import error
+from Tokens import EquationPart
 
 
 class Variable:

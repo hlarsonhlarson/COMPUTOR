@@ -1,9 +1,4 @@
-from Number import is_number, Number
-from Variable import Variable
-from Sign import Sign
-from error import error
-from _collections import defaultdict
-from EquationPart import EquationPart
+from Tokens.Sign import Sign
 from root import find_root
 
 
@@ -50,6 +45,7 @@ class Equation:
             output_string += f'{value} * X^{key} + '
         output_string = output_string[:-2]
         output_string += '= 0'
+        print(output_string)
 
     def set_abc(self):
         if 2 in self.coefficient_dict:
