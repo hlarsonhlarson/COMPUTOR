@@ -1,4 +1,4 @@
-from .utils import  sign, p_as_function
+from .utils import sign, p_as_function
 
 
 def point_with_sign_inversion(extremity, sign_at_extremity, initial_step):

@@ -1,11 +1,11 @@
-from parsing_string_utils import error
+from parsing_string_utils.error import error
 from root import find_pow
 from .Derivative import derivate
 
 
 def LC(coeff_dict: dict):
     tmp = coeff_dict.items()
-    tmp = sorted(tmp, key=lambda x: x[0])
+    tmp = sorted(tmp, key=lambda x: x[0], reverse=True)
     for key, value in tmp:
         if value != 0:
             return value
@@ -14,7 +14,7 @@ def LC(coeff_dict: dict):
 
 def sign(coeff_dict):
     tmp = coeff_dict.items()
-    tmp = sorted(tmp, key=lambda x: x[0])
+    tmp = sorted(tmp, key=lambda x: x[0], reverse=True)
     for key, value in tmp:
         if value != 0:
             return 1 if value > 0 else 0
@@ -22,6 +22,7 @@ def sign(coeff_dict):
 
 
 def find_low_coeffs(coeff_dict: dict):
+    print(coeff_dict)
     if 0 in coeff_dict:
         b = coeff_dict[0]
     else:

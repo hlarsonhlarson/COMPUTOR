@@ -1,4 +1,4 @@
-from mpath import mpf
+from mpmath import mpf
 from .degree import degree
 from .External_root import external_root
 from .Internal_root import internal_root

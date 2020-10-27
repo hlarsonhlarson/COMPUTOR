@@ -98,4 +98,4 @@ class Equation:
         if biggest_pow < 3:
             self.quadratic_solver(biggest_pow)
         else:
-            self.mega_solver
+            self.mega_solver()
