@@ -18,6 +18,10 @@ def prepare_input_args(input_string):
             input_args.append(')')
             equal_is_present = 1
             break
+    if input_args[0] == '-':
+        input_args[1] = '-' + input_args[1]
+        input_args.remove(input_args[0])
+
     return input_args, equal_is_present
 
 
