@@ -1,6 +1,7 @@
 from parsing_string_utils.preprocessing_string import parse_input
 from Tokens.Equation import Equation
 from sys import argv
+from Bigger_pows_solver import Derivative
 
 if __name__ == '__main__':
     if len(argv) != 2:
@@ -13,3 +14,4 @@ if __name__ == '__main__':
     my_equation.set_coeff_dict()
     my_equation.simple_form()
     my_equation.solve()
+    print(Derivative.derivate(my_equation.coefficient_dict))
