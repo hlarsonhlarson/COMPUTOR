@@ -13,6 +13,8 @@ def real_roots_from_derivative_roots(p, derivative_roots, solver, tolerance):
         p : dicts of coefficients of polynom
         derivative_roots : listList of all roots of p'. Must be in ascending order
         solver : functionA bracketing root-finding function such as bisection
+        tolerance: mpmath number
+            it's epsilon
         ----------
         """
         n_derivative_roots = len(derivative_roots)
@@ -28,7 +30,7 @@ def real_roots_from_derivative_roots(p, derivative_roots, solver, tolerance):
             left_limit_sign = sign(lc(p))
         else:
             left_limit_sign = -sign(lc(p))
-        roots = roots + external_root(p, left_extremity, left_limit_sign, mpf(1), tolerance, solver)
+        roots = roots + external_root(p, left_extremity, left_limit_sign, mpf(-1), tolerance, solver)
         for i in range(n_derivative_roots - 1):
             roots = roots + internal_root(p,  derivative_roots[i], derivative_roots[i+1], tolerance, solver)
         roots = roots + external_root(p,  right_extremity,

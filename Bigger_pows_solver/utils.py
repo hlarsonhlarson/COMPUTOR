@@ -5,14 +5,11 @@ from .Derivative import derivate
 def lc(coeff_dict: dict):
     tmp = coeff_dict.items()
     tmp = sorted(tmp, key=lambda x: x[0], reverse=True)
-    for key, value in tmp:
-        if value != 0:
-            return value
-    return 0
+    return tmp[0][1] if tmp else 0
 
 
 def sign(num):
-    return 1 if num > 0 else 0
+    return 1 if num > 0 else -1
 
 
 def find_low_coeffs(coeff_dict: dict):
