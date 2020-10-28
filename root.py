@@ -1,4 +1,6 @@
 def find_pow(num, degree):
+    if degree == 0:
+        return 1
     result = num
     for i in range(degree - 1):
         result *= num

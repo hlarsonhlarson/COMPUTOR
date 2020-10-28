@@ -1,4 +1,4 @@
-import Variable
+from Tokens import Variable
 
 
 class EquationPart:

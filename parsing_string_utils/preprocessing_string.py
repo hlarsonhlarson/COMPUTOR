@@ -1,7 +1,7 @@
-from Number import is_number, Number
-from Variable import Variable
-from Sign import Sign
-from error import error
+from Tokens.Number import is_number, Number
+from Tokens.Variable import Variable
+from Tokens.Sign import Sign
+from parsing_string_utils.error import error
 
 
 def prepare_input_args(input_string):
@@ -18,6 +18,10 @@ def prepare_input_args(input_string):
             input_args.append(')')
             equal_is_present = 1
             break
+    if input_args[0] == '-':
+        input_args[1] = '-' + input_args[1]
+        input_args.remove(input_args[0])
+
     return input_args, equal_is_present
 
 

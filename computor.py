@@ -1,10 +1,16 @@
-from preprocessing_string import parse_input
-from Equation import Equation
+from parsing_string_utils.preprocessing_string import parse_input
+from Tokens.Equation import Equation
+from sys import argv
+from Bigger_pows_solver import Derivative
 
-input_string = "6 * x^0 + x + 0 * x^3 = 2"
-output_stack = parse_input(input_string)
-my_equation = Equation(output_stack)
-my_equation.stack_pl_mi()
-my_equation.set_coeff_dict()
-my_equation.simple_form()
-my_equation.solve()
+if __name__ == '__main__':
+    if len(argv) != 2:
+        print('Incorrect input. Usage: python3 computor.py "{your expression}"')
+        exit(1)
+    input_string = argv[1]
+    output_stack = parse_input(input_string)
+    my_equation = Equation(output_stack)
+    my_equation.stack_pl_mi()
+    my_equation.set_coeff_dict()
+    my_equation.simple_form()
+    my_equation.solve()

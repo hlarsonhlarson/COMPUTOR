@@ -1,10 +1,8 @@
-from Number import is_number, Number
-from Variable import Variable
-from Sign import Sign
-from error import error
-from _collections import defaultdict
-from EquationPart import EquationPart
+from Tokens.Sign import Sign
 from root import find_root
+from Bigger_pows_solver.mp_roots import mp_roots
+from Bigger_pows_solver.hibrid import hibrid
+from Bigger_pows_solver.Bisection import bisection
 
 
 class Equation:
@@ -50,6 +48,7 @@ class Equation:
             output_string += f'{value} * X^{key} + '
         output_string = output_string[:-2]
         output_string += '= 0'
+        print(output_string)
 
     def set_abc(self):
         if 2 in self.coefficient_dict:
@@ -85,7 +84,10 @@ class Equation:
             print('There is no solution because it\'s something strange')
 
     def mega_solver(self):
-        print('Stub')
+        roots = mp_roots(self.coefficient_dict, hibrid)
+        print('Roots are:')
+        for elem in roots:
+            print(elem)
 
     def find_biggest_pow(self):
         tmp = sorted(self.coefficient_dict.items(), key=lambda x: x[0], reverse=True)
@@ -101,4 +103,4 @@ class Equation:
         if biggest_pow < 3:
             self.quadratic_solver(biggest_pow)
         else:
-            self.mega_solver
+            self.mega_solver()

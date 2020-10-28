@@ -1,4 +1,4 @@
-from error import error
+from parsing_string_utils.error import error
 
 
 class Sign:
