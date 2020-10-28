@@ -17,7 +17,7 @@ def external_root(p, extremity, limit_sign, initial_step, tolerance, solver):
         interval testing values from extremity towards -infinity.
         If initial_step > 0, the function will start by looking for a bracketing
         interval testing values from extremity towards infinity.
-    tolerance : mpmath mpf number
+    tolerance : number
         A number x is considered a root of p if abs(p(x)) < tolerance
     solver : function
         A bracketing root-finding function such as bisection

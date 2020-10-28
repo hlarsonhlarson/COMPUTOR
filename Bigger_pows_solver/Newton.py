@@ -1,4 +1,5 @@
 from .utils import p_as_function, diff_point
+from parsing_string_utils.error import error
 
 
 def newton(a, b, tolerance, p, maxiter=2000):
@@ -8,7 +9,7 @@ def newton(a, b, tolerance, p, maxiter=2000):
     while abs(p_as_function(x_newton, p)) > tolerance:
         iter += 1
         if iter >= maxiter:
-            raise ValueError(f'newton: no convergence after {iter} iterations')
+            error(f'newton: no convergence after {iter} iterations')
             break
         x_newton = x_newton - p_as_function(x_newton, p)/diff_point(x_newton, p)
     return x_newton
