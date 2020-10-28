@@ -1,4 +1,5 @@
 from .utils import p_as_function, diff_point
+from parsing_string_utils.error import error
 
 
 def hibrid( a, b, tolerance, p):
@@ -9,11 +10,11 @@ def hibrid( a, b, tolerance, p):
     f_a = p_as_function(a, p)
     f_b = p_as_function(b, p)
     if f_a * f_b > 0:
-        raise ValueError(f'f(a) and f(b) must have opposite signs')
+        error(f'f(a) and f(b) must have opposite signs')
     n_bisec = 0
     n_newton = 0
     m = (a + b)/2
-    f_m= p_as_function(m)
+    f_m= p_as_function(m, p)
     while abs(f_m) > tolerance:
         old_a, old_b = a, b
         iter += 1
@@ -35,6 +36,6 @@ def hibrid( a, b, tolerance, p):
             a = m
             f_a = f_m
         if a == old_a and b == old_b:
-            raise ValueError(f'hibrid: no progress after {iter} iterations, ‘f’with b -a = {b -a}')
+            error(f'hibrid: no progress after {iter} iterations, ‘f’with b -a = {b -a}')
             break
     return m

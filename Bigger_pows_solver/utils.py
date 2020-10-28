@@ -16,7 +16,6 @@ def sign(num):
 
 
 def find_low_coeffs(coeff_dict: dict):
-    print(coeff_dict)
     if 0 in coeff_dict:
         b = coeff_dict[0]
     else:

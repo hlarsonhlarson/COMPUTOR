@@ -1,6 +1,8 @@
 from Tokens.Sign import Sign
 from root import find_root
 from Bigger_pows_solver.mp_roots import mp_roots
+from Bigger_pows_solver.hibrid import hibrid
+from Bigger_pows_solver.Bisection import bisection
 
 
 class Equation:
@@ -82,7 +84,10 @@ class Equation:
             print('There is no solution because it\'s something strange')
 
     def mega_solver(self):
-        print(mp_roots(self.coefficient_dict, 'hibrid'))
+        roots = mp_roots(self.coefficient_dict, hibrid)
+        print('Roots are:')
+        for elem in roots:
+            print(elem)
 
     def find_biggest_pow(self):
         tmp = sorted(self.coefficient_dict.items(), key=lambda x: x[0], reverse=True)

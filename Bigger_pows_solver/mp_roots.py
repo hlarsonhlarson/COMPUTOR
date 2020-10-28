@@ -3,9 +3,10 @@ from .Derivative import derivate
 from .Real_root_from_derivative_roots import real_roots_from_derivative_roots
 from .utils import find_low_coeffs
 from mpmath import mpf
+from .utils import diff_point, p_as_function
 
 
-def mp_roots(p, solver, tolerance=mpf('1.0e-50')):
+def mp_roots(p, solver, tolerance=mpf('1.0e-10')):
     """
     Returns a list of all real roots of polynomial p.
     Parameters
@@ -25,4 +26,6 @@ def mp_roots(p, solver, tolerance=mpf('1.0e-50')):
         derivative_roots = roots
         p = todo.pop()
         roots = real_roots_from_derivative_roots(p, derivative_roots, solver, tolerance)
+    roots_set = set(roots)
+    roots = list(roots_set)
     return roots

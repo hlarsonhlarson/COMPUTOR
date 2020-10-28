@@ -1,4 +1,5 @@
 from .utils import p_as_function
+from parsing_string_utils.error import error
 
 
 def bisection(a, b, tolerance, p):
@@ -21,6 +22,5 @@ def bisection(a, b, tolerance, p):
                 m = (a + b) / 2
                 p_m = p_as_function(m, p)
                 if old_a == a and old_b == b:
-                    progress = False
-                    raise ValueError(f'bissection: no progress after {iter} iterations, ‘f‘with \na = {a} \nb = {b}')
+                    error('can\'t find roots of this polynom')
     return m

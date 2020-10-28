@@ -14,4 +14,3 @@ if __name__ == '__main__':
     my_equation.set_coeff_dict()
     my_equation.simple_form()
     my_equation.solve()
-    print(Derivative.derivate(my_equation.coefficient_dict))

@@ -36,9 +36,9 @@ def external_root(p, extremity, limit_sign, initial_step, tolerance, solver):
         else:
             if initial_step > 0:
                 a = extremity
-                b = point_with_sign_inversion(extremity, sign_at_extremity, initial_step)
+                b = point_with_sign_inversion(p, extremity, sign_at_extremity, initial_step)
             else:
-                a = point_with_sign_inversion(extremity, sign_at_extremity, initial_step)
+                a = point_with_sign_inversion(p, extremity, sign_at_extremity, initial_step)
                 b = extremity
             root_found = [solver(a, b, tolerance, p)]
     return root_found
