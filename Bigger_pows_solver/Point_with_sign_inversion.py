@@ -14,7 +14,7 @@ def point_with_sign_inversion(p: dict, extremity, sign_at_extremity, initial_ste
         Sign of p(extremity)
     initial_step :
         number
-        initial_step must be a nonzero value; normally, initial_step == mpf(1).
+        initial_step must be a nonzero value; normally, initial_step == 1.
         If initial_step< 0, the function will start by looking for a bracketing
         interval testing values from extremity towards -infinity.
         If initial_step > 0, the function will start by looking for a bracketing
