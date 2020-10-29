@@ -85,6 +85,9 @@ class Equation:
 
     def mega_solver(self):
         roots = mp_roots(self.coefficient_dict, hibrid)
+        if not roots:
+            print('There is no real roots')
+            return
         print('Roots are:')
         for elem in roots:
             print(elem)
