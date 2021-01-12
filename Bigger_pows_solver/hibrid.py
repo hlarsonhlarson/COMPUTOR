@@ -36,6 +36,6 @@ def hibrid( a, b, tolerance, p):
             a = m
             f_a = f_m
         if a == old_a and b == old_b:
-            error(f'hibrid: no progress after {iter} iterations, ‘f’with b -a = {b -a}')
+            error(f'hibrid: no progress after {iter} iterations, can\'t find real roots')
             break
     return m

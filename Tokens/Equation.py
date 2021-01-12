@@ -65,21 +65,29 @@ class Equation:
             c = 0
         return a,b,c
 
+    def negative_discriminant_solution(self, D, a, b):
+        real = -b / 2 / a
+        print('Discriminant is strictly negative, the two solutions are:')
+        D *= -1
+        D = find_root(D, 2) / 2 / a
+        print(real, '+', D, '* i') 
+        print(real, '-', D, '* i') 
+
     def quadratic_solver(self, biggest_pow):
         a, b, c = self.set_abc()
         if biggest_pow == 2:
             D = b * b - 4 * a * c
             if D < 0:
-                print('Discriminant is negative, can\'t solve in real numbers')
+                self.negative_discriminant_solution(D, a, b)
             else:
-                x1 = -b + find_root(D, 2) / 2 / a
-                x2 = -b - find_root(D, 2) / 2 / a
+                x1 = (-b + find_root(D, 2)) / 2 / a
+                x2 = (-b - find_root(D, 2)) / 2 / a
                 if x1 == x2:
-                    print(f'Discriminant is equal to zero. The solution is {x1}')
+                    print(f'Discriminant is to zero. The solution is {x1}')
                 else:
-                    print(f'Discriminant is greater than zero. \nThe solutions are:\n{x1}\n{x2}')
+                    print(f'Discriminant is strictly positive, the two solutions are:\n{x1}\n{x2}')
         elif biggest_pow == 1:
-            print(f'The solution is {-c/b}')
+            print(f'The solution is:\n{-c/b}')
         else:
             print('There is no solution because it\'s something strange')
 
@@ -88,7 +96,7 @@ class Equation:
         if not roots:
             print('There is no real roots')
             return
-        print('Roots are:')
+        print('Real roots are:')
         for elem in roots:
             print(elem)
 
